@@ -260,7 +260,10 @@ def run_start(numdsnodes):
 		keypair = keypairs[x].split(" ")
 		shutil.copyfile('ds_whitelist.xml', LOCAL_RUN_FOLDER + testfolders_list[x] + '/ds_whitelist.xml')
 		shutil.copyfile('shard_whitelist.xml', LOCAL_RUN_FOLDER + testfolders_list[x] + '/shard_whitelist.xml')
-		shutil.copyfile('constants_local.xml', LOCAL_RUN_FOLDER + testfolders_list[x] + '/constants.xml')
+		if x < 19:
+			shutil.copyfile('constants_local.xml', LOCAL_RUN_FOLDER + testfolders_list[x] + '/constants.xml')
+		else:
+			shutil.copyfile('constants_getwork.xml', LOCAL_RUN_FOLDER + testfolders_list[x] + '/constants.xml')
 		shutil.copyfile('dsnodes.xml', LOCAL_RUN_FOLDER + testfolders_list[x] + '/dsnodes.xml')
 
 		if (x < numdsnodes):

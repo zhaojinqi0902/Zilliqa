@@ -130,7 +130,7 @@
     </heartbeat>
     <network_composition>
         <!-- Shard size will be automatically calculated if COMM_SIZE = 0 -->
-        <COMM_SIZE>5</COMM_SIZE>
+        <COMM_SIZE>4</COMM_SIZE>
         <NUM_DS_ELECTION>2</NUM_DS_ELECTION>
         <!-- SHARD_SIZE_TOLERANCE_LO must be smaller than COMM_SIZE -->
         <SHARD_SIZE_TOLERANCE_LO>1</SHARD_SIZE_TOLERANCE_LO>
@@ -171,7 +171,7 @@
         <POW_CHANGE_TO_ADJ_DS_DIFF>2</POW_CHANGE_TO_ADJ_DS_DIFF>
         <DIFFICULTY_DIFF_TOL>4</DIFFICULTY_DIFF_TOL>
         <!-- If PoW submissions over this number, will increase difficulty -->
-        <EXPECTED_SHARD_NODE_NUM>160</EXPECTED_SHARD_NODE_NUM>
+        <EXPECTED_SHARD_NODE_NUM>8</EXPECTED_SHARD_NODE_NUM>
         <!-- If PoW submissions over this number, will select nodes by reputation -->
         <MAX_SHARD_NODE_NUM>180</MAX_SHARD_NODE_NUM>
         <MISORDER_TOLERANCE_IN_PERCENT>5</MISORDER_TOLERANCE_IN_PERCENT>
