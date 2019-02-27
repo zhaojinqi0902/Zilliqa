@@ -261,7 +261,8 @@ class DirectoryService : public Executable {
   static void ClearReputationOfNodeFailToJoin(
       const DequeOfShard& shards,
       std::map<PubKey, uint16_t>& mapNodeReputation);
-  std::set<PubKey> FindTopPriorityNodes(uint8_t& lowestPriority);
+  std::set<PubKey> FindTopPriorityNodes(uint32_t numOfDSWinner,
+                                        uint8_t& lowestPriority);
 
   void SetupMulticastConfigForShardingStructure(unsigned int& my_DS_cluster_num,
                                                 unsigned int& my_shards_lo,

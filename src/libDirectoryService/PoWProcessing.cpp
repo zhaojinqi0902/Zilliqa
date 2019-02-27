@@ -511,7 +511,7 @@ void DirectoryService::ClearReputationOfNodeFailToJoin(
 }
 
 std::set<PubKey> DirectoryService::FindTopPriorityNodes(
-    uint8_t& lowestPriority) {
+    uint32_t numOfDSWinner, uint8_t& lowestPriority) {
   std::vector<std::pair<PubKey, uint8_t>> vecNodePriority;
   vecNodePriority.reserve(m_allPoWs.size());
   for (const auto& kv : m_allPoWs) {
@@ -536,9 +536,16 @@ std::set<PubKey> DirectoryService::FindTopPriorityNodes(
     lowestPriority = vecNodePriority[i].second;
   }
 
-  // Because the oldest DS commitee member still need to keep in the network as
-  // shard node even it didn't do PoW, so also put it into the priority node
+  // Because the oldest DS commitee members still need to keep in the network as
+  // shard node even it didn't do PoW, so also put them into the priority node
   // list.
-  setTopPriorityNodes.insert(m_mediator.m_DSCommittee->back().first);
+  uint32_t numKickedOutDS =
+      std::min({numOfDSWinner, NUM_DS_ELECTION,
+                (uint32_t)m_mediator.m_DSCommittee->size()});
+  if (numKickedOutDS > 0)
+    for (auto iterNode = m_mediator.m_DSCommittee->end() - numKickedOutDS;
+         iterNode < m_mediator.m_DSCommittee->end(); ++iterNode) {
+      setTopPriorityNodes.insert(iterNode->first);
+    }
   return setTopPriorityNodes;
 }

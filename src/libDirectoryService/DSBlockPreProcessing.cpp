@@ -580,7 +580,8 @@ bool DirectoryService::VerifyNodePriority(const DequeOfShard& shards) {
 
   uint32_t numOutOfMyPriorityList = 0;
   uint8_t lowestPriority = 0;
-  auto setTopPriorityNodes = FindTopPriorityNodes(lowestPriority);
+  auto setTopPriorityNodes =
+      FindTopPriorityNodes(m_allDSPoWs.size(), lowestPriority);
 
   LOG_EPOCH(INFO, m_mediator.m_currentEpochNum,
             "Lowest priority to join is " << to_string(lowestPriority));
@@ -757,7 +758,8 @@ bool DirectoryService::RunConsensusOnDSBlockWhenDSPrimary() {
                                     << " more than max node number "
                                     << MAX_SHARD_NODE_NUM);
     uint8_t lowestPriority = 0;
-    auto setTopPriorityNodes = FindTopPriorityNodes(lowestPriority);
+    auto setTopPriorityNodes =
+        FindTopPriorityNodes(m_allDSPoWs.size(), lowestPriority);
     LOG_EPOCH(INFO, m_mediator.m_currentEpochNum,
               "Lowest priority to join is " << to_string(lowestPriority));
 
