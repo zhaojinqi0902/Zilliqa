@@ -224,8 +224,6 @@ class DirectoryService : public Executable {
                             const Peer& from);
   bool ProcessPoWPacketSubmission(const bytes& message, unsigned int offset,
                                   const Peer& from);
-  bool ProcessPoWSubmissionFromPacket(const DSPowSolution& sol);
-
   bool ProcessDSBlockConsensus(const bytes& message, unsigned int offset,
                                const Peer& from);
   bool ProcessMicroblockSubmission(const bytes& message, unsigned int offset,
@@ -624,6 +622,8 @@ class DirectoryService : public Executable {
   // Get entire network peer info
   void GetEntireNetworkPeerInfo(VectorOfNode& peers,
                                 std::vector<PubKey>& pubKeys);
+
+  bool ProcessPoWSubmissionFromPacket(const DSPowSolution& sol);
 
  private:
   static std::map<DirState, std::string> DirStateStrings;
