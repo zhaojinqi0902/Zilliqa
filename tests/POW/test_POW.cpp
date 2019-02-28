@@ -430,10 +430,11 @@ BOOST_AUTO_TEST_CASE(mining_high_diffculty_time_out) {
   // Light client mine and verify
   uint8_t difficultyToUse = 50;
   uint64_t blockToUse = 0;
+  int powTimeInSeconds = 5;
   auto headerHash = POW::GenHeaderHash(rand1, rand2, ipAddr, pubKey, 0, 0);
   ethash_mining_result_t winning_result =
       POWClient.PoWMine(blockToUse, difficultyToUse, keyPair, headerHash, true,
-                        std::time(0), POW_WINDOW_IN_SECONDS);
+                        std::time(0), powTimeInSeconds);
   BOOST_REQUIRE(!winning_result.success);
   bool verifyLight = POWClient.PoWVerify(
       blockToUse, difficultyToUse, headerHash, winning_result.winning_nonce,

@@ -83,4 +83,4 @@ target_link_libraries (Test_UpgradeManager PUBLIC Utils curl AccountData Message
 add_executable(Test_DataConversion Test_DataConversion.cpp)
 target_include_directories(Test_DataConversion PUBLIC ${CMAKE_SOURCE_DIR}/src ${CMAKE_SOURCE_DIR}/tests)
 target_link_libraries (Test_DataConversion PUBLIC Utils)
-add_test(NAME Test_DataConversion COMMAND Test_DataConversion)
+#add_test(NAME Test_DataConversion COMMAND Test_DataConversion)
